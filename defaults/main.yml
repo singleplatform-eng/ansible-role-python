@@ -1,0 +1,32 @@
+---
+
+# Package defaults
+python_apt_key_url: ''
+python_apt_repo: ''
+python_global_packages: []
+python_package_name: python
+
+# Build defaults
+python_build_from_source: false
+python_configure_prefix: '/usr/local'
+python_version: ''
+
+# Internals
+python_major_version: "{{python_version[0]}}"
+python_path: "{{python_configure_prefix}}/bin/python{{python_major_version}}"
+python_pip_path: "/usr/local/bin/pip{{python_major_version}}"
+python_tar_dir: "Python-{{python_version}}"
+python_tar_url: "https://www.python.org/ftp/python/{{python_version}}/{{python_tar_dir}}.tgz"
+python_dependencies:
+  - build-essential
+  - libbz2-dev
+  - libdb-dev
+  - libgdbm-dev
+  - liblzma-dev
+  - libncurses-dev
+  - libreadline-dev
+  - libsqlite3-dev
+  - libssl-dev
+  - python-dev
+  - tk-dev
+  - zlib1g-dev

@@ -1,0 +1,35 @@
+---
+
+# Install package
+- include: install_package.yml
+  when: not python_build_from_source
+
+# Build from source
+- name: Check if python is already installed
+  stat: path="{{python_path}}"
+  when: python_build_from_source
+  register: python_installed
+
+- include: build_source.yml
+  when: python_build_from_source and python_installed.stat.exists == false
+
+# Install/upgrade pip
+- name: Check if pip is already installed
+  stat: path="{{python_pip_path}}"
+  register: pip_installed
+
+- name: Install pip
+  include: install_pip.yml
+  when: pip_installed.stat.exists == false
+
+- name: Upgrade pip
+  pip: name=pip state=latest executable="{{python_pip_path}}"
+
+# Install packages
+- name: Install/upgrade virtualenv
+  pip: name=virtualenv state=latest executable="{{python_pip_path}}"
+  when: python_major_version == '2'
+
+- name: Install global packages
+  pip: name="{{item}}" state=present executable="{{python_pip_path}}"
+  with_items: "{{python_global_packages}}"

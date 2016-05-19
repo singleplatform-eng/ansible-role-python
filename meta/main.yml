@@ -1,0 +1,17 @@
+---
+dependencies: []
+
+galaxy_info:
+  author: Colin Hoglund
+  description: Python Ansible role that supports package installs as well as building from source.
+  license: "license (BSD, MIT)"
+  min_ansible_version: 1.9
+  platforms:
+  - name: Debian
+    versions:
+    - all
+  - name: Ubuntu
+    versions:
+    - all
+  categories:
+    - development

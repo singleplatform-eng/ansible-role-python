@@ -1,0 +1,19 @@
+---
+
+- name: Install dependencies
+  apt: name="{{item}}" state=latest update_cache=yes cache_valid_time=86400
+  with_items: "{{python_dependencies}}"
+
+- name: Download python tarball
+  get_url: url="{{python_tar_url}}" dest=/tmp/
+
+- name: Unpack python tarball
+  unarchive: src="/tmp/{{python_tar_dir}}.tgz" dest=/tmp/ copy=no
+
+- name: Ensure python prefix directory exists
+  file: path="{{python_configure_prefix}}" state=directory
+
+- name: Build python
+  shell: "./configure --prefix={{python_configure_prefix}}; make; make install"
+  args:
+    chdir: "/tmp/{{python_tar_dir}}"

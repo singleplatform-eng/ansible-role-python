@@ -1,0 +1,28 @@
+---
+
+- name: Add apt key
+  apt_key: url={{python_apt_key_url}}
+  when: python_apt_repo != ''
+
+- name: Setup apt repository
+  apt_repository: repo="{{python_apt_repo}}"
+  when: python_apt_repo != ''
+
+- name: Install package
+  apt: name={{python_package_name}} update_cache=yes cache_valid_time=86400
+
+- name: Get python version
+  shell: "apt-cache show {{python_package_name}} | grep 'Version:' | awk '{print $2}'"
+  register: python_version_output
+
+- name: Set python_major_version
+  set_fact:
+    python_major_version: "{{python_version_output.stdout_lines[0][0]}}"
+
+- name: Get python location
+  command: "which python{{python_major_version}}"
+  register: python_location_output
+
+- name: Set python_path
+  set_fact:
+    python_path: "{{python_location_output.stdout_lines[0]}}"
