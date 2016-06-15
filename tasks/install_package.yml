@@ -5,7 +5,10 @@
   when: python_apt_repo != ''
 
 - name: Setup apt repository
-  apt_repository: repo="{{python_apt_repo}}"
+  apt_repository:
+    repo: "{{python_apt_repo}}"
+    # temporary fix until https://github.com/ansible/ansible-modules-core/pull/3702 is released
+    mode: '0644'
   when: python_apt_repo != ''
 
 - name: Install package
