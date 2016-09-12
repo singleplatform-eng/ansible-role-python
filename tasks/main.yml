@@ -25,6 +25,15 @@
 - name: Upgrade pip
   pip: name=pip state=latest executable="{{python_pip_path}}"
 
+- name: Add system pip.conf
+  template:
+    src: pip.conf.j2
+    dest: /etc/pip.conf
+    owner: root
+    group: root
+    mode: 0644
+  when: python_pip_config is defined
+
 # Install packages
 - name: Install/upgrade virtualenv
   pip: name=virtualenv state=latest executable="{{python_pip_path}}"

@@ -1,0 +1,13 @@
+{% for section,config in python_pip_config.iteritems() | sort %}
+[{{section}}]
+{% for k,v in config.iteritems() | sort %}
+{% if v is iterable and v is not string %}
+{{k}} =
+{% for item in v %}
+    {{item}}
+{% endfor %}
+{% else %}
+{{k}} = {{v}}
+{% endif %}
+{% endfor %}
+{% endfor %}
