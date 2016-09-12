@@ -6,6 +6,16 @@ python_apt_repo: ''
 python_global_packages: []
 python_package_name: python
 
+# Example pip configuration
+#python_pip_config:
+#    global:
+#        index-url: http://pypi.example.com/simple
+#        find-links:
+#            - http://pypi2.example.com/simple
+#            - http://pypi3.example.com/simple
+#    search:
+#        index: http://pypi.example.com/simple
+
 # Build defaults
 python_build_from_source: false
 python_configure_prefix: '/usr/local'
