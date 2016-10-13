@@ -10,8 +10,6 @@ https://galaxy.ansible.com/singleplatform-eng/python/
 Role Variables
 --------------
 
-- `logrhythm_host`: host for Mediator 1 (this is required, unless you override the entire `logrhythm_config`)
-
 - `python_apt_key_url`: apt key for installing custom python package (Default: '')
 - `python_apt_repo`: apt repo for installing custom python package (Default: '')
 - `python_global_packages`: pip packages to install globally (Default: [])
