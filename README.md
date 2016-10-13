@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/singleplatform-eng/ansible-role-python.svg?branch=master)](https://travis-ci.org/singleplatform-eng/ansible-role-python)
 
 ansible-role-python
 =========
