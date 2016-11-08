@@ -23,7 +23,7 @@
   when: pip_installed.stat.exists == false
 
 - name: Upgrade pip
-  pip: name=pip state=latest executable="{{python_pip_path}}"
+  pip: name=pip state=latest executable="{{python_pip_path}}" umask=0002
 
 - name: Add system pip.conf
   template:
@@ -36,9 +36,9 @@
 
 # Install packages
 - name: Install/upgrade virtualenv
-  pip: name=virtualenv state=latest executable="{{python_pip_path}}"
+  pip: name=virtualenv state=latest executable="{{python_pip_path}}" umask=0002
   when: python_major_version == '2'
 
 - name: Install global packages
-  pip: name="{{item}}" state=present executable="{{python_pip_path}}"
+  pip: name="{{item}}" state=present executable="{{python_pip_path}}" umask=0002
   with_items: "{{python_global_packages}}"
