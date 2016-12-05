@@ -22,9 +22,6 @@
   include: install_pip.yml
   when: pip_installed.stat.exists == false
 
-- name: Upgrade pip
-  pip: name=pip state=latest executable="{{python_pip_path}}" umask="{{python_pip_umask}}"
-
 - name: Add system pip.conf
   template:
     src: pip.conf.j2
@@ -35,8 +32,8 @@
   when: python_pip_config is defined
 
 # Install packages
-- name: Install/upgrade virtualenv
-  pip: name=virtualenv state=latest executable="{{python_pip_path}}" umask="{{python_pip_umask}}"
+- name: Install virtualenv
+  pip: name=virtualenv executable="{{python_pip_path}}" umask="{{python_pip_umask}}"
   when: python_major_version == '2'
 
 - name: Install global packages
