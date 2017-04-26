@@ -18,6 +18,7 @@
   shell: "apt-cache show {{python_package_name}} | grep 'Version:' | awk '{print $2}' | cut -d. -f1"
   check_mode: no
   register: python_version_output
+  changed_when: False #This just polls the system for information and doesn't change system information
 
 - name: Set python_major_version
   set_fact:
@@ -27,6 +28,7 @@
   command: "which python{{python_major_version}}"
   check_mode: no
   register: python_location_output
+  changed_when: False #This just polls the system for information and doesn't change system information
 
 - name: Set python_path
   set_fact:
