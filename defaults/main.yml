@@ -18,7 +18,7 @@ python_package_name: python
 
 # Build defaults
 python_build_from_source: false
-python_configure_prefix: '/usr/local'
+python_configure_prefix: '/usr'
 python_version: ''
 
 # Internals
