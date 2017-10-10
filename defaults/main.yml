@@ -24,7 +24,7 @@ python_version: ''
 # Internals
 python_major_version: "{{python_version[0]}}"
 python_path: "{{python_configure_prefix}}/bin/python{{python_major_version}}"
-python_pip_path: "/usr/local/bin/pip{{python_major_version}}"
+python_pip_path: "{{python_configure_prefix}}/bin/pip{{python_major_version}}"
 python_tar_dir: "Python-{{python_version}}"
 python_tar_url: "https://www.python.org/ftp/python/{{python_version}}/{{python_tar_dir}}.tgz"
 python_dependencies:
