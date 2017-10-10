@@ -4,4 +4,4 @@
   get_url: url=https://bootstrap.pypa.io/get-pip.py dest=/tmp/
 
 - name: Install pip
-  command: "{{python_path}} /tmp/get-pip.py -t {{python_configure_prefix}}/bin"
+  command: "{{python_path}} /tmp/get-pip.py"
