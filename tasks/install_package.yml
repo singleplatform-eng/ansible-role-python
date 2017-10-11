@@ -23,13 +23,3 @@
 - name: Set python_major_version
   set_fact:
     python_major_version: "{{python_version_output.stdout}}"
-
-- name: Get python location
-  command: "which python{{python_major_version}}"
-  check_mode: no
-  register: python_location_output
-  changed_when: False #This just polls the system for information and doesn't change system information
-
-- name: Set python_path
-  set_fact:
-    python_path: "{{python_location_output.stdout}}"
