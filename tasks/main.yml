@@ -1,7 +1,7 @@
 ---
 
 # Install package
-- include: install_package.yml
+- include_tasks: install_package.yml
   when: not python_build_from_source
 
 # Build from source
@@ -10,7 +10,7 @@
   when: python_build_from_source
   register: python_installed
 
-- include: build_source.yml
+- include_tasks: build_source.yml
   when: python_build_from_source and python_installed.stat.exists == false
 
 # Install/upgrade pip
@@ -19,7 +19,7 @@
   register: pip_installed
 
 - name: Install pip
-  include: install_pip.yml
+  include_tasks: install_pip.yml
   when: pip_installed.stat.exists == false
 
 - name: Add system pip.conf
