@@ -78,7 +78,7 @@ printf "\n"
 
 # Run Ansible playbook.
 printf ${green}"Running command: docker exec $container_id env TERM=xterm ansible-playbook /etc/ansible/roles/role_under_test/tests/$playbook"${neutral}
-docker exec $container_id env TERM=xterm env ANSIBLE_FORCE_COLOR=1 ansible-playbook /etc/ansible/roles/role_under_test/tests/$playbook
+docker exec $container_id env TERM=xterm env ANSIBLE_FORCE_COLOR=1 ansible-playbook /etc/ansible/roles/role_under_test/tests/$playbook -D
 
 # Run Ansible playbook again (idempotence test).
 printf ${green}"Running playbook again: idempotence test"${neutral}
