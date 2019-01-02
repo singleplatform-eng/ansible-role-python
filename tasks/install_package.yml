@@ -14,12 +14,28 @@
 - name: Install package
   apt: name={{python_package_name}} update_cache=yes cache_valid_time=86400
 
+- name: Debug python path
+  debug:
+    msg: "{{python_path}}"
+
 - name: Get python version
   shell: "apt-cache show {{python_package_name}} | grep 'Version:' | awk '{print $2}' | cut -d. -f1"
   check_mode: no
   register: python_version_output
   changed_when: False #This just polls the system for information and doesn't change system information
 
+- name: Debug python_major_version pre
+  debug:
+    msg: "{{python_major_version}}"
+
+- name: Debug python version output
+  debug:
+    msg: "{{python_version_output.stdout}}"
+
 - name: Set python_major_version
   set_fact:
     python_major_version: "{{python_version_output.stdout}}"
+
+- name: Debug python_major_version post
+  debug:
+    msg: "{{python_major_version}}"
