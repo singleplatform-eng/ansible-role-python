@@ -3,5 +3,9 @@
 - name: Download get-pip.py
   get_url: url=https://bootstrap.pypa.io/get-pip.py dest=/tmp/
 
+- name: Debug pip
+  debug:
+    msg: "{{python_path}}"
+
 - name: Install pip
   command: "{{python_path}} /tmp/get-pip.py"
