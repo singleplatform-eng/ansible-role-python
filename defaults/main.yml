@@ -46,3 +46,4 @@ python_dependencies:
 
 # Needed to get around restrictive umask on CIS-supplied images. Setting to Ubuntu default of 0022.
 python_pip_umask: '0022'
+python_pip_module_opts: --default pip
