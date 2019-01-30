@@ -1,4 +1,8 @@
 ---
+- name: Install python3-distutils
+  package:
+    name: python3-distutils
+  when: ansible_distribution_release == 'bionic'
 
 
 - name: Install Pip
