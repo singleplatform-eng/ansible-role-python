@@ -2,10 +2,15 @@
 - name: Install python3-distutils
   package:
     name: python3-distutils
-  when: ansible_distribution_release == 'bionic'
+  when: ansible_distribution_major_version|int >= 16
 
-- name: Download get-pip.py
-  get_url: url=https://bootstrap.pypa.io/get-pip.py dest=/tmp/
 
-- name: Install pip
-  command: "{{python_path}} /tmp/get-pip.py"
+- name: Install Pip
+  block:
+    - name: Module Install
+      command: "{{python_path}} -m ensurepip {{python_pip_module_opts}}"
+  rescue:
+    - name: Download get-pip
+      get_url: url=https://bootstrap.pypa.io/get-pip.py dest=/tmp/
+    - name: Run get-pip
+      command: "{{python_path}} /tmp/get-pip.py"

@@ -1,0 +1,15 @@
+python_dependencies:
+  - build-essential
+  - libbz2-dev
+  - libdb-dev
+  - libexpat1-dev
+  - libffi-dev
+  - libgdbm-dev
+  - liblzma-dev
+  - libncurses-dev
+  - libreadline-dev
+  - libsqlite3-dev
+  - libssl-dev
+  - python-dev
+  - tk-dev
+  - zlib1g-dev
