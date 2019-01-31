@@ -31,6 +31,6 @@ python_tar_url: "https://www.python.org/ftp/python/{{python_version}}/{{python_t
 
 # Needed to get around restrictive umask on CIS-supplied images. Setting to Ubuntu default of 0022.
 python_pip_umask: '0022'
-python_pip_module_opts: --default pip
+python_pip_module_opts: --default-pip
 
 python_build_opts: --with-zlib-dir=/lib
