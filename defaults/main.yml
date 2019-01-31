@@ -28,22 +28,9 @@ python_pip_prefix: '/usr/local'
 python_pip_path: "{{python_pip_prefix}}/bin/pip{{python_major_version}}"
 python_tar_dir: "Python-{{python_version}}"
 python_tar_url: "https://www.python.org/ftp/python/{{python_version}}/{{python_tar_dir}}.tgz"
-python_dependencies:
-  - build-essential
-  - libbz2-dev
-  - libdb-dev
-  - libexpat1-dev
-  - libffi-dev
-  - libgdbm-dev
-  - liblzma-dev
-  - libncurses-dev
-  - libreadline-dev
-  - libsqlite3-dev
-  - libssl-dev
-  - python-dev
-  - tk-dev
-  - zlib1g-dev
 
 # Needed to get around restrictive umask on CIS-supplied images. Setting to Ubuntu default of 0022.
 python_pip_umask: '0022'
 python_pip_module_opts: --default pip
+
+python_build_opts: --with-zlib-dir=/lib
