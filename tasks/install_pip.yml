@@ -2,7 +2,7 @@
 - name: Install python3-distutils
   package:
     name: python3-distutils
-  when: ansible_distribution_release == 'bionic'
+  when: ansible_distribution_major_version|int >= 16
 
 
 - name: Install Pip
