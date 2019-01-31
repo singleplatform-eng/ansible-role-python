@@ -15,7 +15,7 @@
   apt: name={{python_package_name}} update_cache=yes cache_valid_time=86400
 
 - name: Get python version
-  shell: "apt-cache policy {{python_package_name}} | grep 'Installed:' | awk '{print $2}' | cut -d. -f1"
+  shell: "apt-cache policy {{python_package_name}} | grep 'Installed:' | awk '{print $2}' | cut -d. -f1 | uniq"
   check_mode: no
   register: python_version_output
   changed_when: False #This just polls the system for information and doesn't change system information
