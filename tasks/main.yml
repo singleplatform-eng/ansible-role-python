@@ -34,7 +34,6 @@
 # Install packages
 - name: Install virtualenv
   pip: name=virtualenv executable="{{python_pip_path}}" umask="{{python_pip_umask}}"
-  when: python_major_version == '2'
 
 - name: Install global packages
   pip: name="{{item}}" state=present executable="{{python_pip_path}}" umask="{{python_pip_umask}}"
