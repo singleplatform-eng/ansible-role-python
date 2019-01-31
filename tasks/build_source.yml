@@ -1,5 +1,10 @@
 ---
 
+- name: Include dist dependency vars
+  include_vars:
+    file: "{{ansible_distribution_release}}.yml"
+  when: python_dependencies is not defined
+
 - name: Install dependencies
   apt: name="{{item}}" update_cache=yes cache_valid_time=86400
   with_items: "{{python_dependencies}}"
@@ -14,6 +19,6 @@
   file: path="{{python_configure_prefix}}" state=directory
 
 - name: Build python
-  shell: "./configure --prefix={{python_configure_prefix}}; make; make install"
+  shell: "./configure --prefix={{python_configure_prefix}} {{python_build_opts}}; make; make install"
   args:
     chdir: "/tmp/{{python_tar_dir}}"
