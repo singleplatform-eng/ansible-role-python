@@ -32,9 +32,7 @@
   when: python_pip_config is defined
 
 - name: Enusre pip is upgraded
-  pip:
-    name: pip
-    state: latest
+  pip: name=pip state=latest executable="{{python_pip_path}}" umask="{{python_pip_umask}}"
 
 # Install packages
 - name: Install virtualenv
