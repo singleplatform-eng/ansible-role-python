@@ -31,6 +31,11 @@
     mode: 0644
   when: python_pip_config is defined
 
+- name: Enusre pip is upgraded
+  pip:
+    name: pip
+    state: latest
+
 # Install packages
 - name: Install virtualenv
   pip: name=virtualenv executable="{{python_pip_path}}" umask="{{python_pip_umask}}"
