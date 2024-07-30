@@ -10,6 +10,7 @@ galaxy_info:
       versions:
         - bionic
         - trusty
+        - jammy
 
   galaxy_tags:
     - python
