@@ -1,0 +1,17 @@
+---
+python_dependencies:
+  - build-essential
+  - libbz2-1.0
+  - libc6
+  - libdb5.3
+  - libexpat1
+  - libffi6
+  - libncursesw5
+  - libreadline7
+  - libsqlite3-0
+  - libssl1.0.0
+  - libssl1.0-dev
+  - libtinfo5
+  - mime-support
+  - zlib1g
+  - zlib1g-dev
